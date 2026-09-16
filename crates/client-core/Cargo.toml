@@ -1,0 +1,39 @@
+[package]
+name = "dialkit-core"
+description = "Shared transport primitives for dialkit"
+readme = "README.md"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[features]
+default = ["rustls-tls"]
+rustls-tls = ["reqwest/rustls-tls"]
+native-tls = ["reqwest/native-tls"]
+
+[dependencies]
+async-stream.workspace = true
+base64.workspace = true
+futures-core.workspace = true
+futures-util.workspace = true
+http.workspace = true
+rand.workspace = true
+reqwest.workspace = true
+secrecy.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+url.workspace = true
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
+tracing-test = { version = "0.2.5", features = ["no-env-filter"] }
+wiremock = "0.6.5"
+
+[lints]
+workspace = true

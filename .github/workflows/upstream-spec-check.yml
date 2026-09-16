@@ -1,0 +1,30 @@
+name: Twilio specification drift
+
+on:
+  schedule:
+    - cron: "17 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch candidate without adopting it
+        run: |
+          git clone --filter=blob:none --no-checkout https://github.com/twilio/twilio-oai.git /tmp/twilio-oai
+          git -C /tmp/twilio-oai checkout --detach origin/main -- spec/json/twilio_api_v2010.json
+          git -C /tmp/twilio-oai rev-parse HEAD > upstream-commit.txt
+          diff -u codegen/spec/twilio_api_v2010.json /tmp/twilio-oai/spec/json/twilio_api_v2010.json > upstream-spec.diff || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: twilio-api-v2010-drift
+          path: |
+            upstream-commit.txt
+            upstream-spec.diff
+      - name: Confirm report-only behavior
+        run: git diff --exit-code -- . ':!upstream-commit.txt' ':!upstream-spec.diff'
+

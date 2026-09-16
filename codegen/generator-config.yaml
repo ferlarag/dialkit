@@ -1,0 +1,18 @@
+generatorName: rust
+library: reqwest
+inputSpec: codegen/spec/twilio_api_v2010.json
+outputDir: crates/api-generated
+additionalProperties:
+  packageName: dialkit-api-generated
+  packageVersion: 0.1.0
+  supportAsync: true
+  useSingleRequestParameter: true
+  hideGenerationTimestamp: true
+  reqwestDefaultFeatures: rustls-tls,json
+  preferUnsignedInt: true
+globalProperties:
+  apiDocs: true
+  modelDocs: true
+  apiTests: false
+  modelTests: false
+

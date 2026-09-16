@@ -1,0 +1,7 @@
+error[E0432]: unresolved import `dialkit::models`
+ --> tests/compile/generated_leak.rs:1:5
+  |
+1 | use dialkit::models;
+  |     ^^^^^^^^^------
+  |              |
+  |              no `models` in the root

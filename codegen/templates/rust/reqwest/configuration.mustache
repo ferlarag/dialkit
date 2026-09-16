@@ -1,0 +1,41 @@
+{{>partial_header}}
+
+use dialkit_core::request::HttpClient;
+use std::fmt;
+
+#[derive(Clone)]
+pub struct Configuration {
+    pub(crate) base_path: String,
+    pub(crate) user_agent: Option<String>,
+    pub(crate) client: HttpClient,
+}
+
+impl Configuration {
+    /// Creates generated bindings that share dialkit's authenticated transport policy.
+    #[must_use]
+    pub fn new(client: HttpClient) -> Self {
+        let base_path = client.base_url().as_str().trim_end_matches('/').to_owned();
+        Self {
+            base_path,
+            user_agent: Some("dialkit-api-generated/{{{version}}}".to_owned()),
+            client,
+        }
+    }
+
+    #[must_use]
+    pub fn with_user_agent(mut self, user_agent: impl Into<String>) -> Self {
+        self.user_agent = Some(user_agent.into());
+        self
+    }
+}
+
+impl fmt::Debug for Configuration {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter
+            .debug_struct("Configuration")
+            .field("base_path", &self.base_path)
+            .field("user_agent", &self.user_agent)
+            .field("credentials", &"[REDACTED]")
+            .finish_non_exhaustive()
+    }
+}

@@ -1,0 +1,21 @@
+[generator]
+name = "rust"
+version = "7.25.0"
+tag_commit = "ef964b04480889ef86b56cfae84ade8ad4c91c41"
+artifact_sha256 = "41ce4f6b07f196676439d710759fa1ced7a08066d06ff1bf314681470289efae"
+
+[specification]
+repository = "twilio/twilio-oai"
+commit = "5aa7f31977ce5812f7b7bc1f46a38555ebaa2888"
+source_path = "spec/json/twilio_api_v2010.json"
+sha256 = "170b3ccd0f891416840083d72f1795b1499b14a18d4873fd2b39f47ef84642d6"
+
+[templates]
+revision = "dialkit-rust-v1"
+tree_sha256 = "f462de8d75683872c5ffcf3eeb5e882b28291ee1b041b2c199058e5541859793"
+
+[configuration]
+sha256 = "93b6863628c448ce0e8adbfe1814a821770baa899ceaad50b1f91c00760220ff"
+
+[outputs]
+inventory_sha256 = "97dae50ad9424ef4f5ed1c773da8898f634691982f59cbcc5109d7def6a9188b"

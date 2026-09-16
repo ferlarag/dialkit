@@ -1,0 +1,49 @@
+[package]
+name = "dialkit"
+description = "An idiomatic community Rust SDK for Twilio"
+readme = "README.md"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[features]
+default = ["rustls-tls", "webhooks", "twiml"]
+rustls-tls = ["dialkit-api-generated/rustls-tls", "dialkit-core/rustls-tls"]
+native-tls = ["dialkit-api-generated/native-tls", "dialkit-core/native-tls"]
+webhooks = ["dep:base64", "dep:hmac", "dep:sha1", "dep:sha2"]
+twiml = ["dep:quick-xml"]
+
+[dependencies]
+base64 = { workspace = true, optional = true }
+dialkit-api-generated = { version = "0.1.0", path = "../api-generated", default-features = false }
+dialkit-core = { version = "0.1.0", path = "../client-core", default-features = false }
+futures-core.workspace = true
+futures-util.workspace = true
+http.workspace = true
+hmac = { workspace = true, optional = true }
+quick-xml = { workspace = true, optional = true }
+secrecy.workspace = true
+serde.workspace = true
+sha1 = { workspace = true, optional = true }
+sha2 = { workspace = true, optional = true }
+thiserror.workspace = true
+url.workspace = true
+
+[dev-dependencies]
+futures-util.workspace = true
+insta = "1.43.2"
+proptest = "1.7.0"
+serde_json.workspace = true
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
+trybuild = "1.0.111"
+wiremock = "0.6.5"
+
+[[bench]]
+name = "performance"
+harness = false
+
+[lints]
+workspace = true

@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain: ["1.85", stable]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo check --workspace --all-features
+      - run: cargo test --workspace --all-features
+      - run: cargo test -p dialkit --doc
+      - run: cargo test -p dialkit --examples
+      - run: cargo fmt --all --check
+      - run: cargo clippy --workspace --all-targets --all-features -- -D warnings
+      - run: bash scripts/audit-sensitive-data.sh
+
+  generation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.85"
+      - uses: Swatinem/rust-cache@v2
+      - run: sudo apt-get update && sudo apt-get install -y bats
+      - run: bats codegen/tests/regenerate.bats
+      - run: codegen/regenerate.sh --check
+
+  tls-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        features: ["rustls-tls,webhooks,twiml", "native-tls,webhooks,twiml"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo test -p dialkit --no-default-features --features "${{ matrix.features }}"

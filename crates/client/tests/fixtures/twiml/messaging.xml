@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><Response><Message><Body>Hello &amp; goodbye</Body><Media>https://example.test/a.png?x=1&amp;y=2</Media></Message><Redirect>https://example.test/next</Redirect></Response>
+

@@ -1,0 +1,7 @@
+{
+  "token": "12345",
+  "url": "https://example.com/json?bodySHA256=b57a49dc4b8acf8eb33fd8285381e2ffc35f5a12bb596f1a79f2204410125d6a",
+  "body": "{\"event\":\"hello\",\"value\":\"✓\"}",
+  "signature": "jpccLQKQ0Ybzbg+oH3gL17Vh0lw="
+}
+
