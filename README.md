@@ -1,9 +1,15 @@
 # Dialkit
 
+[![Crates.io](https://img.shields.io/crates/v/dialkit.svg)](https://crates.io/crates/dialkit)
+[![Documentation](https://docs.rs/dialkit/badge.svg)](https://docs.rs/dialkit)
+[![CI](https://github.com/ferlarag/dialkit/actions/workflows/ci.yml/badge.svg)](https://github.com/ferlarag/dialkit/actions/workflows/ci.yml)
+
 An async Rust SDK for Twilio. Dialkit provides a small, typed API for common workflows such as
 sending messages, making calls, pagination, webhook validation, and TwiML.
 
 > Community maintained. Not an official Twilio SDK.
+
+[Crate](https://crates.io/crates/dialkit) · [API docs](https://docs.rs/dialkit) · [Releases](https://github.com/ferlarag/dialkit/releases)
 
 ## Install
 
