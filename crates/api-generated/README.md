@@ -8,8 +8,8 @@ Use exactly the same version as `dialkit` and `dialkit-core`:
 
 ```toml
 [dependencies]
-dialkit = "0.1.0"
-dialkit-api-generated = "0.1.0"
+dialkit = "0.2.0"
+dialkit-api-generated = "0.2.0"
 ```
 
 The generated `apis::configuration::Configuration` provides access to operations that are not yet
@@ -21,25 +21,23 @@ normalization, and tracing as the facade:
 use dialkit_api_generated::apis::configuration::Configuration;
 use dialkit_core::{
     auth::{AccountSid, Credentials},
-    request::{ClientConfiguration, HttpClient},
+    request::{EndpointProfile, HttpClient},
     retry::RetryPolicy,
 };
 use secrecy::SecretString;
 use std::time::Duration;
-use url::Url;
 
 # fn example() -> Result<(), dialkit_core::Error> {
-let transport = HttpClient::new(ClientConfiguration {
-    credentials: Credentials::account_token(
+let transport = HttpClient::for_profile(
+    Credentials::account_token(
         AccountSid::new("AC00000000000000000000000000000000").expect("valid account SID"),
         SecretString::from("read-from-a-secret-store".to_owned()),
     ),
-    base_url: Url::parse("https://api.twilio.com/").expect("constant URL"),
-    connect_timeout: Duration::from_secs(10),
-    request_timeout: Duration::from_secs(30),
-    retry_policy: RetryPolicy::conservative(),
-    allow_http_for_tests: false,
-})?;
+    EndpointProfile::api_2010(),
+    Duration::from_secs(10),
+    Duration::from_secs(30),
+    RetryPolicy::conservative(),
+)?;
 let generated = Configuration::new(transport);
 # let _ = generated;
 # Ok(())
@@ -50,3 +48,7 @@ Generated configuration debug output is redacted, and generated string enums ret
 
 Generation provenance is included in `PROVENANCE.md`. Do not edit `src/` directly; update a pinned
 input or template and run `codegen/regenerate.sh`.
+
+The source-qualified coverage manifest in `codegen/coverage/rest-api-2010.toml` identifies the 139
+Voice and Messaging operations selected for the stable Dialkit coverage claim. Other generated
+API-2010 operations remain available for compatibility but do not expand that claim.

@@ -17,6 +17,19 @@ fn pager(pages: Vec<Result<Page<u32>, Error>>) -> Pager<u32> {
     })
 }
 
+#[test]
+fn both_source_page_shapes_preserve_opaque_continuations() {
+    use dialkit_core::pagination::{api_2010_continuation, messaging_v1_continuation};
+
+    let reserved = "/next?PageToken=a%2Fb%2Bc%3D&PageSize=50";
+    let api = api_2010_continuation(Some(reserved.to_owned())).unwrap();
+    let messaging = messaging_v1_continuation(Some(reserved.to_owned())).unwrap();
+    assert_eq!(api.as_str(), reserved);
+    assert_eq!(messaging.as_str(), reserved);
+    assert!(api_2010_continuation(None).is_none());
+    assert!(messaging_v1_continuation(Some(String::new())).is_none());
+}
+
 #[tokio::test]
 async fn empty_single_and_multiple_pages_preserve_order() {
     let mut empty = pager(vec![Ok(Page {

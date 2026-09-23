@@ -24,9 +24,10 @@ fn serde_json_values_are_not_qualified_as_models() {
 }
 
 #[test]
-fn required_incoming_phone_account_sid_is_not_treated_as_optional() {
+fn incoming_phone_path_and_optional_body_account_sids_remain_distinct() {
     let generated = include_str!("../src/apis/api20100401_incoming_phone_number_api.rs");
     assert!(generated.contains("urlencode(&params.account_sid)"));
-    assert!(generated.contains("let param_value = params.account_sid;"));
+    assert!(generated.contains("pub new_account_sid: Option<String>"));
+    assert!(generated.contains("if let Some(param_value) = params.new_account_sid"));
     assert!(!generated.contains("if let Some(param_value) = params.account_sid"));
 }

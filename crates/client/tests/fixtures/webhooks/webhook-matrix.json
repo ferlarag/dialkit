@@ -1,0 +1,11 @@
+{
+  "synthetic": true,
+  "families": [
+    "voice-instruction", "call-progress", "answering-machine", "twiml-action",
+    "recording", "conference", "queue", "gather", "stream-siprec",
+    "transcription", "payment", "user-defined-message", "incoming-message",
+    "message-status", "messaging-service-routing", "json-verification"
+  ],
+  "unknown_field": "FutureParameter",
+  "unknown_value": "introduced-after-pin"
+}

@@ -3,6 +3,7 @@
 use crate::{
     auth::Credentials,
     error::{ApiError, Error, ResponseMetadata},
+    response::ByteResponse,
     retry::{OperationSafety, RetryPolicy},
     trace,
 };
@@ -24,6 +25,65 @@ pub fn encode_path_segment(value: &str) -> String {
 pub enum TlsBackend {
     Rustls,
     Native,
+    /// The crate compiled without a TLS transport feature.
+    Unavailable,
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum EndpointService {
+    Api2010,
+    MessagingV1,
+    Custom,
+}
+
+#[derive(Clone, Debug, Eq, PartialEq)]
+pub struct EndpointProfile {
+    service: EndpointService,
+    base_url: Url,
+    allow_http_for_tests: bool,
+}
+
+impl EndpointProfile {
+    #[must_use]
+    pub fn api_2010() -> Self {
+        Self::new(
+            EndpointService::Api2010,
+            Url::parse("https://api.twilio.com/").expect("constant Twilio URL is valid"),
+            false,
+        )
+    }
+
+    #[must_use]
+    pub fn messaging_v1() -> Self {
+        Self::new(
+            EndpointService::MessagingV1,
+            Url::parse("https://messaging.twilio.com/").expect("constant Twilio URL is valid"),
+            false,
+        )
+    }
+
+    #[must_use]
+    pub const fn new(service: EndpointService, base_url: Url, allow_http_for_tests: bool) -> Self {
+        Self {
+            service,
+            base_url,
+            allow_http_for_tests,
+        }
+    }
+
+    #[must_use]
+    pub const fn service(&self) -> EndpointService {
+        self.service
+    }
+
+    #[must_use]
+    pub const fn base_url(&self) -> &Url {
+        &self.base_url
+    }
+
+    pub fn resolve(&self, reference: &str) -> Result<Url, Error> {
+        crate::pagination::resolve_continuation(&self.base_url, reference)
+    }
 }
 
 /// Reports the single backend selected for new clients. If downstream feature
@@ -40,7 +100,7 @@ pub const fn active_tls_backend() -> TlsBackend {
     }
     #[cfg(not(any(feature = "rustls-tls", feature = "native-tls")))]
     {
-        compile_error!("dialkit-core requires rustls-tls or native-tls");
+        TlsBackend::Unavailable
     }
 }
 
@@ -52,6 +112,26 @@ pub struct ClientConfiguration {
     pub request_timeout: Duration,
     pub retry_policy: RetryPolicy,
     pub allow_http_for_tests: bool,
+}
+
+impl ClientConfiguration {
+    #[must_use]
+    pub fn for_profile(
+        credentials: Credentials,
+        profile: EndpointProfile,
+        connect_timeout: Duration,
+        request_timeout: Duration,
+        retry_policy: RetryPolicy,
+    ) -> Self {
+        Self {
+            credentials,
+            base_url: profile.base_url,
+            connect_timeout,
+            request_timeout,
+            retry_policy,
+            allow_http_for_tests: profile.allow_http_for_tests,
+        }
+    }
 }
 
 #[derive(Clone, Debug)]
@@ -68,6 +148,7 @@ pub struct RequestSpec {
 #[derive(Clone)]
 pub struct HttpClient {
     config: Arc<ClientConfiguration>,
+    endpoint: EndpointProfile,
     http: reqwest::Client,
 }
 
@@ -85,7 +166,8 @@ impl HttpClient {
         }
         let builder = reqwest::Client::builder()
             .connect_timeout(config.connect_timeout)
-            .timeout(config.request_timeout);
+            .timeout(config.request_timeout)
+            .redirect(reqwest::redirect::Policy::none());
         #[cfg(feature = "rustls-tls")]
         let builder = builder.use_rustls_tls();
         #[cfg(all(not(feature = "rustls-tls"), feature = "native-tls"))]
@@ -94,10 +176,35 @@ impl HttpClient {
             attempts: 0,
             message: safe_transport(&error),
         })?;
+        let endpoint = EndpointProfile::new(
+            EndpointService::Custom,
+            config.base_url.clone(),
+            config.allow_http_for_tests,
+        );
         Ok(Self {
             config: Arc::new(config),
+            endpoint,
             http,
         })
+    }
+
+    pub fn for_profile(
+        credentials: Credentials,
+        endpoint: EndpointProfile,
+        connect_timeout: Duration,
+        request_timeout: Duration,
+        retry_policy: RetryPolicy,
+    ) -> Result<Self, Error> {
+        let config = ClientConfiguration::for_profile(
+            credentials,
+            endpoint.clone(),
+            connect_timeout,
+            request_timeout,
+            retry_policy,
+        );
+        let mut client = Self::new(config)?;
+        client.endpoint = endpoint;
+        Ok(client)
     }
 
     #[must_use]
@@ -106,15 +213,25 @@ impl HttpClient {
     }
     #[must_use]
     pub fn base_url(&self) -> &Url {
-        &self.config.base_url
+        self.endpoint.base_url()
+    }
+
+    #[must_use]
+    pub fn endpoint_profile(&self) -> &EndpointProfile {
+        &self.endpoint
     }
 
     /// Creates an authenticated request for schema-generated bindings.
     pub fn request(&self, method: Method, url: &str) -> reqwest::RequestBuilder {
-        self.http.request(method, url).header(
-            header::AUTHORIZATION,
-            self.config.credentials.authorization_value(),
-        )
+        let request = self.http.request(method, url);
+        if self.endpoint.resolve(url).is_ok() {
+            request.header(
+                header::AUTHORIZATION,
+                self.config.credentials.authorization_value(),
+            )
+        } else {
+            request
+        }
     }
 
     /// Executes a generated request through the same retry, timeout, error,
@@ -138,6 +255,32 @@ impl HttpClient {
     {
         let span = trace::request_span(spec.operation, spec.method.as_str(), spec.route_template);
         self.execute_json_inner(spec).instrument(span).await
+    }
+
+    pub async fn execute_bytes(&self, spec: &RequestSpec) -> Result<ByteResponse, Error> {
+        let span = trace::request_span(spec.operation, spec.method.as_str(), spec.route_template);
+        async {
+            let url = if spec.path.starts_with("http://") || spec.path.starts_with("https://") {
+                self.endpoint.resolve(&spec.path)?
+            } else {
+                self.endpoint.resolve(spec.path.trim_start_matches('/'))?
+            };
+            let mut request = self.request(spec.method.clone(), url.as_str());
+            if !spec.query.is_empty() {
+                request = request.query(&spec.query);
+            }
+            if !spec.form.is_empty() {
+                request = request.form(&spec.form);
+            }
+            let request = request
+                .build()
+                .map_err(|_| Error::Validation("byte request could not be constructed".into()))?;
+            self.execute_request_inner(request, spec.safety)
+                .await
+                .map(ByteResponse::from_reqwest)
+        }
+        .instrument(span)
+        .await
     }
 
     async fn execute_json_inner<T>(&self, spec: &RequestSpec) -> Result<T, Error>
@@ -268,6 +411,7 @@ impl HttpClient {
         safety: OperationSafety,
     ) -> Result<reqwest::Response, Error> {
         tracing::info!(operation = "generated_operation", "request started");
+        self.endpoint.resolve(request.url().as_str())?;
         let max_attempts = self.config.retry_policy.attempts();
         for attempt in 1..=max_attempts {
             tracing::Span::current().record("attempt", attempt);

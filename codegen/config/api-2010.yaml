@@ -1,0 +1,15 @@
+generatorName: rust
+library: reqwest
+additionalProperties:
+  packageName: dialkit-api-generated
+  packageVersion: 0.2.0
+  supportAsync: true
+  useSingleRequestParameter: true
+  hideGenerationTimestamp: true
+  reqwestDefaultFeatures: rustls-tls,json
+  preferUnsignedInt: true
+globalProperties:
+  apiDocs: true
+  modelDocs: true
+  apiTests: false
+  modelTests: false

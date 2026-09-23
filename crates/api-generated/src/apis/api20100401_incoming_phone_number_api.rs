@@ -105,6 +105,8 @@ pub struct UpdateIncomingPhoneNumberParams {
     pub account_sid: String,
     /// The Twilio-provided string that uniquely identifies the IncomingPhoneNumber resource to update.
     pub sid: String,
+    // Optional account reassignment from the request body.
+    pub new_account_sid: Option<String>,
     /// The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resource to update.  For more information, see [Exchanging Numbers Between Subaccounts](https://www.twilio.com/docs/iam/api/subaccounts#exchanging-numbers).
     pub account_sid2: Option<String>,
     /// The API version to use for incoming calls made to the phone number. The default is `2010-04-01`.
@@ -499,8 +501,7 @@ pub async fn update_incoming_phone_number(
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
     let mut multipart_form_params = super::FormParams::default();
-    let param_value = params.account_sid;
-    {
+    if let Some(param_value) = params.new_account_sid {
         multipart_form_params.insert("AccountSid", param_value.to_string());
     }
     if let Some(param_value) = params.api_version {

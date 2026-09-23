@@ -2,9 +2,7 @@
 
 use crate::{Client, Error, Pager};
 use dialkit_api_generated::models::{ApiV2010AccountCall, ListCallResponse};
-use dialkit_core::{
-    error::Error as CoreError, pagination::Page, request::RequestSpec, retry::OperationSafety,
-};
+use dialkit_core::{error::Error as CoreError, request::RequestSpec, retry::OperationSafety};
 use futures_util::FutureExt as _;
 use http::Method;
 use std::fmt;
@@ -256,10 +254,10 @@ impl Calls {
                     .into_iter()
                     .map(Call::try_from)
                     .collect::<Result<Vec<_>, _>>()?;
-                Ok(Page {
+                Ok(crate::pagination::api_2010_page(
                     items,
-                    next_page_uri: response.next_page_uri.flatten(),
-                })
+                    response.next_page_uri.flatten(),
+                ))
             }
             .boxed()
         });

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><Response><Say>Hello &lt;world&gt; &amp; friends</Say><Gather><Say>Press 1</Say><Play>https://example.test/tone?a=1&amp;b=2</Play></Gather><Dial>+15005550006</Dial><Record/><Pause length="2"/><Hangup/><Redirect>https://example.test/next</Redirect></Response>
+

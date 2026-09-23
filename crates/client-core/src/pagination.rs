@@ -10,10 +10,54 @@ use std::{
 };
 use url::Url;
 
+#[derive(Clone, Debug, Eq, Hash, PartialEq)]
+pub struct OpaqueContinuation(String);
+
+impl OpaqueContinuation {
+    #[must_use]
+    pub fn new(value: impl Into<String>) -> Option<Self> {
+        let value = value.into();
+        (!value.is_empty()).then_some(Self(value))
+    }
+
+    #[must_use]
+    pub fn as_str(&self) -> &str {
+        &self.0
+    }
+
+    #[must_use]
+    pub fn into_string(self) -> String {
+        self.0
+    }
+}
+
+pub fn api_2010_continuation(next_page_uri: Option<String>) -> Option<OpaqueContinuation> {
+    next_page_uri.and_then(OpaqueContinuation::new)
+}
+
+pub fn messaging_v1_continuation(next_page_url: Option<String>) -> Option<OpaqueContinuation> {
+    next_page_url.and_then(OpaqueContinuation::new)
+}
+
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct Page<T> {
     pub items: Vec<T>,
     pub next_page_uri: Option<String>,
+}
+
+impl<T> Page<T> {
+    #[must_use]
+    pub fn from_continuation(items: Vec<T>, continuation: Option<OpaqueContinuation>) -> Self {
+        Self {
+            items,
+            next_page_uri: continuation.map(OpaqueContinuation::into_string),
+        }
+    }
+
+    #[must_use]
+    pub fn continuation(&self) -> Option<OpaqueContinuation> {
+        self.next_page_uri.clone().and_then(OpaqueContinuation::new)
+    }
 }
 
 pub type PageStream<T> = Pin<Box<dyn Stream<Item = Result<Page<T>, Error>> + Send>>;

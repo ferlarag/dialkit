@@ -27,6 +27,8 @@ jobs:
       - run: cargo test --workspace --all-features
       - run: cargo test -p dialkit --doc
       - run: cargo test -p dialkit --examples
+      - run: cargo check -p dialkit --examples --all-features
+      - run: cargo doc --workspace --all-features --no-deps
       - run: cargo fmt --all --check
       - run: cargo clippy --workspace --all-targets --all-features -- -D warnings
       - run: bash scripts/audit-sensitive-data.sh
@@ -39,15 +41,40 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - run: sudo apt-get update && sudo apt-get install -y bats
       - run: bats codegen/tests/regenerate.bats
+      - run: bats codegen/tests/coverage_audit.bats codegen/tests/upstream_diff.bats
       - run: codegen/regenerate.sh --check
+      - run: codegen/audit-coverage.sh
 
   tls-matrix:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        features: ["rustls-tls,webhooks,twiml", "native-tls,webhooks,twiml"]
+        features: ["default", "rustls-tls,webhooks,twiml", "native-tls,webhooks,twiml"]
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
-      - run: cargo test -p dialkit --no-default-features --features "${{ matrix.features }}"
+      - run: |
+          if [ "${{ matrix.features }}" = default ]; then
+            cargo test -p dialkit
+          else
+            cargo test -p dialkit --no-default-features --features "${{ matrix.features }}"
+          fi
+
+  semver:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: cargo-bins/cargo-binstall@main
+      - run: cargo binstall --no-confirm cargo-semver-checks
+      - name: Check facade against previous release
+        run: |
+          baseline=$(git describe --tags --abbrev=0 2>/dev/null || true)
+          if [ -n "$baseline" ]; then
+            cargo semver-checks check-release -p dialkit --baseline-rev "$baseline"
+          else
+            echo "No published/tagged baseline exists; first-release exception recorded."
+          fi

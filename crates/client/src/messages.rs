@@ -1,10 +1,8 @@
 //! Stable Messages facade.
 
-use crate::{Client, Error, Pager, PhoneEndpoint};
+use crate::{Client, Error, MessageMedia, Pager, PhoneEndpoint};
 use dialkit_api_generated::models::{ApiV2010AccountMessage, ListMessageResponse};
-use dialkit_core::{
-    error::Error as CoreError, pagination::Page, request::RequestSpec, retry::OperationSafety,
-};
+use dialkit_core::{error::Error as CoreError, request::RequestSpec, retry::OperationSafety};
 use futures_util::FutureExt as _;
 use http::Method;
 use std::fmt;
@@ -159,6 +157,10 @@ impl Messages {
     pub(crate) fn new(client: Client) -> Self {
         Self { client }
     }
+    #[must_use]
+    pub fn media(&self, message: MessageSid) -> MessageMedia {
+        MessageMedia::new(self.client.clone(), message)
+    }
     pub async fn create(&self, request: CreateMessage) -> Result<Message, Error> {
         let mut form = vec![("To".into(), request.to.to_string())];
         match request.sender {
@@ -251,10 +253,10 @@ impl Messages {
                     .into_iter()
                     .map(Message::try_from)
                     .collect::<Result<Vec<_>, _>>()?;
-                Ok(Page {
+                Ok(crate::pagination::api_2010_page(
                     items,
-                    next_page_uri: response.next_page_uri.flatten(),
-                })
+                    response.next_page_uri.flatten(),
+                ))
             }
             .boxed()
         });

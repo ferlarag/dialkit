@@ -1,0 +1,2 @@
+schema = "dialkit.coverage-mutations.v1"
+cases = ["missing", "duplicate", "renamed", "wrong-source", "later-source", "missing-evidence"]

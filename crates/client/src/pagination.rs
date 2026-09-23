@@ -8,6 +8,27 @@ use std::{
     task::{Context, Poll},
 };
 
+pub(crate) fn api_2010_page<T>(
+    items: Vec<T>,
+    next_page_uri: Option<String>,
+) -> dialkit_core::pagination::Page<T> {
+    dialkit_core::pagination::Page::from_continuation(
+        items,
+        dialkit_core::pagination::api_2010_continuation(next_page_uri),
+    )
+}
+
+#[allow(dead_code)]
+pub(crate) fn messaging_v1_page<T>(
+    items: Vec<T>,
+    next_page_url: Option<String>,
+) -> dialkit_core::pagination::Page<T> {
+    dialkit_core::pagination::Page::from_continuation(
+        items,
+        dialkit_core::pagination::messaging_v1_continuation(next_page_url),
+    )
+}
+
 pub struct Pager<T> {
     pub(crate) inner: dialkit_core::pagination::Pager<T>,
 }

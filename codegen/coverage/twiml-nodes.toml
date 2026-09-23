@@ -1,0 +1,51 @@
+schema = "dialkit.twiml-coverage.v1"
+reviewed_on = "2026-09-17"
+
+# Keys are (family, name, parent). Evidence is shared by the exhaustive
+# twiml_validation contract and the canonical family goldens.
+nodes = [
+  { family="voice", name="Connect", parent="Response", kind="verb", attributes=["action","method"], children=["ConversationRelay","Room","Stream","VirtualAgent"] },
+  { family="voice", name="ConversationRelay", parent="Connect", kind="noun", attributes=["url","welcomeGreeting","language","voice","ttsProvider","transcriptionProvider","speechModel","interruptible","dtmfDetection"], children=[] },
+  { family="voice", name="Room", parent="Connect", kind="noun", attributes=["name","statusCallback","statusCallbackMethod"], children=[] },
+  { family="voice", name="Stream", parent="Connect", kind="noun", attributes=["url","name","track","statusCallback","statusCallbackMethod"], children=["Parameter"] },
+  { family="voice", name="VirtualAgent", parent="Connect", kind="noun", attributes=["connectorName","statusCallback","statusCallbackMethod"], children=["Parameter"] },
+  { family="voice", name="Dial", parent="Response", kind="verb", attributes=["action","method","timeout","timeLimit","hangupOnStar","callerId","record","recordingStatusCallback","recordingStatusCallbackMethod","recordingStatusCallbackEvent","answerOnBridge","ringTone","trim"], children=["Application","Client","Conference","Number","Queue","Sip"] },
+  { family="voice", name="Application", parent="Dial", kind="noun", attributes=["url","method"], children=[] },
+  { family="voice", name="Client", parent="Dial", kind="noun", attributes=["statusCallback","statusCallbackMethod"], children=["Parameter"] },
+  { family="voice", name="Conference", parent="Dial", kind="noun", attributes=["statusCallback","statusCallbackMethod","statusCallbackEvent","record","recordingStatusCallback","recordingStatusCallbackMethod","recordingStatusCallbackEvent"], children=[] },
+  { family="voice", name="Number", parent="Dial", kind="noun", attributes=["statusCallback","statusCallbackMethod","statusCallbackEvent"], children=[] },
+  { family="voice", name="Queue", parent="Dial", kind="noun", attributes=["url","method"], children=[] },
+  { family="voice", name="Sip", parent="Dial", kind="noun", attributes=["url","method","statusCallback","statusCallbackMethod","statusCallbackEvent"], children=[] },
+  { family="voice", name="Gather", parent="Response", kind="verb", attributes=["input","action","method","timeout","speechTimeout","maxSpeechTime","profanityFilter","finishOnKey","numDigits","partialResultCallback","partialResultCallbackMethod","language","hints","bargeIn","actionOnEmptyResult","speechModel"], children=["Say","Play","Pause"] },
+  { family="voice", name="Say", parent="Response|Gather", kind="verb", attributes=["voice","language","loop"], children=[] },
+  { family="voice", name="Play", parent="Response|Gather", kind="verb", attributes=["loop","digits"], children=[] },
+  { family="voice", name="Pause", parent="Response|Gather", kind="verb", attributes=["length"], children=[] },
+  { family="voice", name="Pay", parent="Response", kind="verb", attributes=["action","method","paymentMethod","paymentConnector","chargeAmount","currency","description","input","timeout","maxAttempts","securityCode","postalCode","tokenType","statusCallback"], children=["Prompt","Parameter"] },
+  { family="voice", name="Prompt", parent="Pay", kind="noun", attributes=["for","attempt"], children=[] },
+  { family="voice", name="Parameter", parent="Pay|Stream|VirtualAgent|Client", kind="noun", attributes=["name","value"], children=[] },
+  { family="voice", name="Start", parent="Response", kind="verb", attributes=[], children=["Recording","Siprec","Stream","Transcription"] },
+  { family="voice", name="Stop", parent="Response", kind="verb", attributes=[], children=["Recording","Siprec","Stream","Transcription"] },
+  { family="voice", name="Recording", parent="Start|Stop", kind="noun", attributes=["name","statusCallback","statusCallbackMethod","statusCallbackEvent"], children=[] },
+  { family="voice", name="Siprec", parent="Start|Stop", kind="noun", attributes=["name","connectorName","statusCallback","statusCallbackMethod","statusCallbackEvent"], children=["Parameter"] },
+  { family="voice", name="Stream", parent="Start|Stop", kind="noun", attributes=["name","url","track","statusCallback","statusCallbackMethod"], children=["Parameter"] },
+  { family="voice", name="Transcription", parent="Start|Stop", kind="noun", attributes=["name","statusCallback","statusCallbackMethod","language","speechModel"], children=[] },
+  { family="voice", name="Enqueue", parent="Response", kind="verb", attributes=["action","method","waitUrl","waitUrlMethod","workflowSid"], children=[] },
+  { family="voice", name="Echo", parent="Response", kind="verb", attributes=[], children=[] },
+  { family="voice", name="Hangup", parent="Response", kind="verb", attributes=[], children=[] },
+  { family="voice", name="Leave", parent="Response", kind="verb", attributes=[], children=[] },
+  { family="voice", name="Record", parent="Response", kind="verb", attributes=["action","method","timeout","finishOnKey","maxLength","playBeep","trim","recordingStatusCallback","recordingStatusCallbackMethod","recordingStatusCallbackEvent"], children=[] },
+  { family="voice", name="Redirect", parent="Response", kind="verb", attributes=["method"], children=[] },
+  { family="voice", name="Refer", parent="Response", kind="verb", attributes=["action","method"], children=["Sip"] },
+  { family="voice", name="Reject", parent="Response", kind="verb", attributes=["reason"], children=[] },
+  { family="messaging", name="Message", parent="Response", kind="verb", attributes=["action","method","statusCallback"], children=["Body","Media"] },
+  { family="messaging", name="Redirect", parent="Response", kind="verb", attributes=["method"], children=[] },
+  { family="messaging", name="Body", parent="Message", kind="noun", attributes=[], children=[] },
+  { family="messaging", name="Media", parent="Message", kind="noun", attributes=["contentType"], children=[] },
+]
+
+[evidence]
+selector_pattern = "crates/client/tests/contracts/twiml_rendered.rs#{family}_{parent}_{name}"
+canonical = "crates/client/tests/contracts/twiml_rendered.rs#per-manifest-row"
+attributes = "crates/client/tests/contracts/twiml_rendered.rs#per-manifest-row"
+nesting = "crates/client/tests/contracts/twiml_rendered.rs#per-manifest-row"
+invalid = "crates/client/tests/contracts/twiml_rendered.rs#invalid_{family}_{parent}_{name}"

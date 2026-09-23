@@ -19,20 +19,45 @@ impl serde::Serialize for FormParams {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Clone)]
 pub struct ResponseContent<T> {
     pub status: reqwest::StatusCode,
     pub content: String,
     pub entity: Option<T>,
 }
 
-#[derive(Debug)]
 pub enum Error<T> {
     Core(dialkit_core::error::Error),
     Reqwest(reqwest::Error),
     Serde(serde_json::Error),
     Io(std::io::Error),
     ResponseError(ResponseContent<T>),
+}
+
+impl<T> fmt::Debug for ResponseContent<T> {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter
+            .debug_struct("ResponseContent")
+            .field("status", &self.status)
+            .field("content", &"[REDACTED]")
+            .field("entity", &self.entity.as_ref().map(|_| "[REDACTED]"))
+            .finish()
+    }
+}
+
+impl<T> fmt::Debug for Error<T> {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Core(error) => formatter.debug_tuple("Core").field(error).finish(),
+            Self::Reqwest(_) => formatter.write_str("Reqwest([REDACTED])"),
+            Self::Serde(_) => formatter.write_str("Serde([REDACTED])"),
+            Self::Io(_) => formatter.write_str("Io([REDACTED])"),
+            Self::ResponseError(content) => formatter
+                .debug_tuple("ResponseError")
+                .field(content)
+                .finish(),
+        }
+    }
 }
 
 impl<T> fmt::Display for Error<T> {
@@ -49,7 +74,7 @@ impl<T> fmt::Display for Error<T> {
     }
 }
 
-impl<T: fmt::Debug> error::Error for Error<T> {
+impl<T> error::Error for Error<T> {
     fn source(&self) -> Option<&(dyn error::Error + 'static)> {
         match self {
             Self::Core(error) => Some(error),
