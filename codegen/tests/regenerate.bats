@@ -4,7 +4,11 @@ setup() {
   PROJECT_ROOT=$(cd "$BATS_TEST_DIRNAME/../.." && pwd)
   WORK_ROOT=$(mktemp -d "${TMPDIR:-/tmp}/dialkit-regen-test.XXXXXX")
   tar -C "$PROJECT_ROOT" --exclude=.git --exclude=target -cf - . | tar -C "$WORK_ROOT" -xf -
-  export CARGO_TARGET_DIR="$PROJECT_ROOT/target"
+  # Never share artifacts with the source checkout. Rust embeds
+  # CARGO_MANIFEST_DIR in tests that inspect repository fixtures, so sharing
+  # the target directory would leave binaries pointing at this temporary
+  # checkout after teardown.
+  export CARGO_TARGET_DIR="$WORK_ROOT/target"
 }
 
 teardown() {
@@ -20,12 +24,14 @@ teardown() {
 
 @test "checksum mismatch stops before generated output changes" {
   cd "$WORK_ROOT"
-  before=$(sha256sum crates/api-generated/src/lib.rs)
-  printf '\n' >> codegen/spec/twilio_api_v2010.json
+  api_before=$(sha256sum crates/api-generated/src/lib.rs)
+  messaging_before=$(sha256sum crates/messaging-generated/src/lib.rs)
+  printf '\n' >> codegen/spec/twilio_messaging_v1.json
   run ./codegen/regenerate.sh --update
   [ "$status" -ne 0 ]
   [[ "$output" == *"checksum mismatch"* ]]
-  [ "$before" = "$(sha256sum crates/api-generated/src/lib.rs)" ]
+  [ "$api_before" = "$(sha256sum crates/api-generated/src/lib.rs)" ]
+  [ "$messaging_before" = "$(sha256sum crates/messaging-generated/src/lib.rs)" ]
 }
 
 @test "check mode detects changed added and deleted generated paths" {
@@ -34,6 +40,7 @@ teardown() {
   touch crates/api-generated/src/added_drift.rs
   rm crates/api-generated/src/models/call_enum_status.rs
   printf '\n# doc drift\n' >> crates/api-generated/docs/Api20100401CallApi.md
+  printf '\n// messaging drift\n' >> crates/messaging-generated/src/lib.rs
   run ./codegen/regenerate.sh --check
   [ "$status" -ne 0 ]
   [[ "$output" == *"generated output differs"* ]]
@@ -44,9 +51,27 @@ teardown() {
   printf 'sentinel\n' > unrelated.txt
   printf '\n// drift\n' >> crates/api-generated/src/lib.rs
   printf '\n# drift\n' >> crates/api-generated/docs/Api20100401CallApi.md
+  printf '\n// drift\n' >> crates/messaging-generated/src/lib.rs
   run ./codegen/regenerate.sh --update
   [ "$status" -eq 0 ]
   [ "$(cat unrelated.txt)" = "sentinel" ]
   ! grep -q 'drift' crates/api-generated/src/lib.rs
   ! grep -q 'drift' crates/api-generated/docs/Api20100401CallApi.md
+  ! grep -q 'drift' crates/messaging-generated/src/lib.rs
+}
+
+@test "failed candidate tests restore both generated trees" {
+  cd "$WORK_ROOT"
+  api_before=$(sha256sum crates/api-generated/src/lib.rs)
+  messaging_before=$(sha256sum crates/messaging-generated/src/lib.rs)
+  printf '\n// drift\n' >> crates/api-generated/src/lib.rs
+  printf '\n// drift\n' >> crates/messaging-generated/src/lib.rs
+  printf 'this is not valid Rust\n' > crates/messaging-generated/tests/forced_failure.rs
+  run ./codegen/regenerate.sh --update
+  [ "$status" -ne 0 ]
+  [[ "$output" == *"restored both previous outputs"* ]]
+  ! [ "$api_before" = "$(sha256sum crates/api-generated/src/lib.rs)" ]
+  ! [ "$messaging_before" = "$(sha256sum crates/messaging-generated/src/lib.rs)" ]
+  grep -q 'drift' crates/api-generated/src/lib.rs
+  grep -q 'drift' crates/messaging-generated/src/lib.rs
 }

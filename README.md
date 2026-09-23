@@ -4,8 +4,8 @@
 [![Documentation](https://docs.rs/dialkit/badge.svg)](https://docs.rs/dialkit)
 [![CI](https://github.com/ferlarag/dialkit/actions/workflows/ci.yml/badge.svg)](https://github.com/ferlarag/dialkit/actions/workflows/ci.yml)
 
-An async Rust SDK for Twilio. Dialkit provides a small, typed API for common workflows such as
-sending messages, making calls, pagination, webhook validation, and TwiML.
+An async Rust SDK for Twilio. Dialkit provides a typed stable facade for Calls, Messages, Voice
+controls, binary media, Messaging Services, pagination, webhook validation/parsing, and TwiML.
 
 > Community maintained. Not an official Twilio SDK.
 
@@ -15,7 +15,7 @@ sending messages, making calls, pagination, webhook validation, and TwiML.
 
 ```toml
 [dependencies]
-dialkit = "0.1"
+dialkit = "0.2"
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 ```
 
@@ -82,7 +82,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-More examples are available in [`crates/client/examples`](crates/client/examples).
+The [task-oriented workflow index](crates/client/README.md#task-oriented-workflow-index) maps all 12 representative call, message, TwiML, and webhook tasks to facade entrypoints, compiling examples, and synthetic inputs. More examples are available in [`crates/client/examples`](crates/client/examples).
 
 ## Features
 
@@ -96,14 +96,19 @@ More examples are available in [`crates/client/examples`](crates/client/examples
 To use native TLS:
 
 ```toml
-dialkit = { version = "0.1", default-features = false, features = ["native-tls", "webhooks", "twiml"] }
+dialkit = { version = "0.2", default-features = false, features = ["native-tls", "webhooks", "twiml"] }
 ```
 
 ## What is in this repository?
 
 - `dialkit` — stable, handwritten API intended for application code.
-- `dialkit-api-generated` — complete API generated from the pinned Twilio OpenAPI specification.
+- `dialkit-api-generated` — pinned API-2010 generated companion (139 selected operations).
+- `dialkit-messaging-generated` — pinned Messaging-v1 generated companion (58 selected operations).
 - `dialkit-core` — shared authentication, HTTP, retry, error, and tracing behavior.
+
+The generated companions are the exhaustive, versioned escape hatch for uncommon endpoints. They
+remain separate from the stable facade so generated model and transport types do not leak into
+application-facing APIs. Coverage evidence is reproducible with `codegen/audit-coverage.sh`.
 
 Credentials and sensitive request values are redacted from library-generated errors, debug output,
 and traces. Read operations use conservative retries; ambiguous mutations are not retried unless
@@ -115,6 +120,7 @@ explicitly enabled.
 cargo test --workspace --all-features
 cargo clippy --workspace --all-targets --all-features -- -D warnings
 bash codegen/regenerate.sh --check
+codegen/audit-coverage.sh
 ```
 
 Release and generation notes are in [`docs/maintainer`](docs/maintainer).

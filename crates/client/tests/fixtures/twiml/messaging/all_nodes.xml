@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><Response><Message action="https://example.test/action" method="POST" statusCallback="https://example.test/status"><Body>Hello ✓ &amp; goodbye</Body><Media>https://example.test/one.png?a=1&amp;b=2</Media><Media>https://example.test/two.png</Media></Message></Response>

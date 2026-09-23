@@ -1,0 +1,186 @@
+use std::error;
+use std::fmt;
+
+#[derive(Default)]
+pub(crate) struct FormParams(Vec<(&'static str, String)>);
+
+impl FormParams {
+    pub(crate) fn insert(&mut self, name: &'static str, value: String) {
+        self.0.push((name, value));
+    }
+}
+
+impl serde::Serialize for FormParams {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        serde::Serialize::serialize(&self.0, serializer)
+    }
+}
+
+#[derive(Clone)]
+pub struct ResponseContent<T> {
+    pub status: reqwest::StatusCode,
+    pub content: String,
+    pub entity: Option<T>,
+}
+
+pub enum Error<T> {
+    Core(dialkit_core::error::Error),
+    Reqwest(reqwest::Error),
+    Serde(serde_json::Error),
+    Io(std::io::Error),
+    ResponseError(ResponseContent<T>),
+}
+
+impl<T> fmt::Debug for ResponseContent<T> {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter
+            .debug_struct("ResponseContent")
+            .field("status", &self.status)
+            .field("content", &"[REDACTED]")
+            .field("entity", &self.entity.as_ref().map(|_| "[REDACTED]"))
+            .finish()
+    }
+}
+
+impl<T> fmt::Debug for Error<T> {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Core(error) => formatter.debug_tuple("Core").field(error).finish(),
+            Self::Reqwest(_) => formatter.write_str("Reqwest([REDACTED])"),
+            Self::Serde(_) => formatter.write_str("Serde([REDACTED])"),
+            Self::Io(_) => formatter.write_str("Io([REDACTED])"),
+            Self::ResponseError(content) => formatter
+                .debug_tuple("ResponseError")
+                .field(content)
+                .finish(),
+        }
+    }
+}
+
+impl<T> fmt::Display for Error<T> {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Core(error) => write!(formatter, "dialkit transport: {error}"),
+            Self::Reqwest(_) => formatter.write_str("request construction failed"),
+            Self::Serde(_) => formatter.write_str("response decoding failed"),
+            Self::Io(_) => formatter.write_str("I/O failed"),
+            Self::ResponseError(content) => {
+                write!(formatter, "response returned status {}", content.status)
+            }
+        }
+    }
+}
+
+impl<T> error::Error for Error<T> {
+    fn source(&self) -> Option<&(dyn error::Error + 'static)> {
+        match self {
+            Self::Core(error) => Some(error),
+            Self::Reqwest(error) => Some(error),
+            Self::Serde(error) => Some(error),
+            Self::Io(error) => Some(error),
+            Self::ResponseError(_) => None,
+        }
+    }
+}
+
+impl<T> From<dialkit_core::error::Error> for Error<T> {
+    fn from(error: dialkit_core::error::Error) -> Self {
+        Self::Core(error)
+    }
+}
+
+impl<T> From<reqwest::Error> for Error<T> {
+    fn from(error: reqwest::Error) -> Self {
+        Self::Reqwest(error)
+    }
+}
+
+impl<T> From<serde_json::Error> for Error<T> {
+    fn from(error: serde_json::Error) -> Self {
+        Self::Serde(error)
+    }
+}
+
+impl<T> From<std::io::Error> for Error<T> {
+    fn from(error: std::io::Error) -> Self {
+        Self::Io(error)
+    }
+}
+
+pub fn urlencode<T: AsRef<str>>(value: T) -> String {
+    ::url::form_urlencoded::byte_serialize(value.as_ref().as_bytes()).collect()
+}
+
+pub fn parse_deep_object(prefix: &str, value: &serde_json::Value) -> Vec<(String, String)> {
+    if let serde_json::Value::Object(object) = value {
+        let mut params = vec![];
+        for (key, value) in object {
+            match value {
+                serde_json::Value::Object(_) => {
+                    params.append(&mut parse_deep_object(&format!("{prefix}[{key}]"), value));
+                }
+                serde_json::Value::Array(array) => {
+                    for (index, value) in array.iter().enumerate() {
+                        params.append(&mut parse_deep_object(
+                            &format!("{prefix}[{key}][{index}]"),
+                            value,
+                        ));
+                    }
+                }
+                serde_json::Value::String(value) => {
+                    params.push((format!("{prefix}[{key}]"), value.clone()));
+                }
+                _ => params.push((format!("{prefix}[{key}]"), value.to_string())),
+            }
+        }
+        return params;
+    }
+    Vec::new()
+}
+
+#[allow(dead_code)]
+enum ContentType {
+    Json,
+    Text,
+    Unsupported(String),
+}
+
+impl From<&str> for ContentType {
+    fn from(content_type: &str) -> Self {
+        if content_type.starts_with("application") && content_type.contains("json") {
+            Self::Json
+        } else if content_type.starts_with("text/plain") {
+            Self::Text
+        } else {
+            Self::Unsupported(content_type.to_owned())
+        }
+    }
+}
+
+pub mod messaging_v1_alpha_sender_api;
+pub mod messaging_v1_brand_registration_api;
+pub mod messaging_v1_brand_registration_otp_api;
+pub mod messaging_v1_brand_vetting_api;
+pub mod messaging_v1_channel_sender_api;
+pub mod messaging_v1_deactivations_api;
+pub mod messaging_v1_destination_alpha_sender_api;
+pub mod messaging_v1_domain_certs_api;
+pub mod messaging_v1_domain_config_api;
+pub mod messaging_v1_domain_config_messaging_service_api;
+pub mod messaging_v1_domain_validate_dns_api;
+pub mod messaging_v1_external_campaign_api;
+pub mod messaging_v1_linkshortening_messaging_service_api;
+pub mod messaging_v1_linkshortening_messaging_service_domain_association_api;
+pub mod messaging_v1_phone_number_api;
+pub mod messaging_v1_request_managed_cert_api;
+pub mod messaging_v1_service_api;
+pub mod messaging_v1_short_code_api;
+pub mod messaging_v1_tollfree_verification_api;
+pub mod messaging_v1_us_app_to_person_api;
+pub mod messaging_v1_us_app_to_person_usecase_api;
+pub mod messaging_v1_usecase_api;
+
+pub mod configuration;

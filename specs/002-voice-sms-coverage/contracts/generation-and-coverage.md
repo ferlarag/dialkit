@@ -39,10 +39,15 @@ source_id, operation_id, domain, method, path,
 generated_crate, generated_symbol, phase, pagination,
 evidence.method_path, evidence.authentication,
 evidence.parameters, evidence.success, evidence.error,
-evidence.pagination
+evidence.pagination, evidence.path_parameters,
+evidence.query_parameters, evidence.header_parameters,
+evidence.form_parameters, evidence.json_body,
+evidence.constraints, evidence.request_media_type,
+evidence.response_fields
 ```
 
 Evidence fields are either a fixture/test reference or `{ n_a = "reason" }`. Blank or implicit omission fails the audit.
+Applicability for each placement, constraint, media-type, and response-field dimension is derived independently from the pinned operation by the generator and the audit. The current pin has four Messaging-v1 header-parameter operations and no selected JSON request bodies. A field-free 204 or redirect response records an explicit response-field N/A rather than claiming a decoded field.
 
 ## Union audit
 

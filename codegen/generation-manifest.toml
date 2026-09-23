@@ -4,18 +4,36 @@ version = "7.25.0"
 tag_commit = "ef964b04480889ef86b56cfae84ade8ad4c91c41"
 artifact_sha256 = "41ce4f6b07f196676439d710759fa1ced7a08066d06ff1bf314681470289efae"
 
-[specification]
-repository = "twilio/twilio-oai"
+[repository]
+name = "twilio/twilio-oai"
 commit = "5aa7f31977ce5812f7b7bc1f46a38555ebaa2888"
-source_path = "spec/json/twilio_api_v2010.json"
-sha256 = "170b3ccd0f891416840083d72f1795b1499b14a18d4873fd2b39f47ef84642d6"
 
 [templates]
 revision = "dialkit-rust-v1"
-tree_sha256 = "f462de8d75683872c5ffcf3eeb5e882b28291ee1b041b2c199058e5541859793"
+tree_sha256 = "4328530d019d0424febe49a23ca9123c037c8d7db12cf922b652248f3fb99ed0"
 
-[configuration]
-sha256 = "93b6863628c448ce0e8adbfe1814a821770baa899ceaad50b1f91c00760220ff"
-
-[outputs]
+[[sources]]
+id = "API-2010"
+source_path = "spec/json/twilio_api_v2010.json"
+spec = "codegen/spec/twilio_api_v2010.json"
+sha256 = "170b3ccd0f891416840083d72f1795b1499b14a18d4873fd2b39f47ef84642d6"
+config = "codegen/config/api-2010.yaml"
+config_sha256 = "3ce7c1eb52b9953812bd9e53a125fcb3d5068e0298014012f335851a60bb4b40"
+output = "crates/api-generated"
+inventory = "codegen/generated-api-2010-files.txt"
 inventory_sha256 = "97dae50ad9424ef4f5ed1c773da8898f634691982f59cbcc5109d7def6a9188b"
+selected_operations = 139
+default_origin = "https://api.twilio.com"
+
+[[sources]]
+id = "MSG-V1"
+source_path = "spec/json/twilio_messaging_v1.json"
+spec = "codegen/spec/twilio_messaging_v1.json"
+sha256 = "611c6fde586347615039a7d8c87a4b10d39c6d8566b7d1a691353ef995aaa473"
+config = "codegen/config/messaging-v1.yaml"
+config_sha256 = "692712009be60d6605c97084b861d3341f281ffb0d28e7636bb842bbae55db3e"
+output = "crates/messaging-generated"
+inventory = "codegen/generated-messaging-v1-files.txt"
+inventory_sha256 = "97dae50ad9424ef4f5ed1c773da8898f634691982f59cbcc5109d7def6a9188b"
+selected_operations = 58
+default_origin = "https://messaging.twilio.com"

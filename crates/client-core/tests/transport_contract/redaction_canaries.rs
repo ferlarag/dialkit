@@ -60,6 +60,9 @@ async fn real_request_errors_and_traces_redact_every_sensitive_position() {
         "message-REQUEST-CANARY",
         "https://media.test/REQUEST-CANARY",
         "<Say>twiml-REQUEST-CANARY</Say>",
+        "sip-password-REQUEST-CANARY",
+        "payment-token-REQUEST-CANARY",
+        "signature-REQUEST-CANARY",
     ];
     let server = MockServer::start().await;
     Mock::given(method("POST"))
@@ -95,6 +98,9 @@ async fn real_request_errors_and_traces_redact_every_sensitive_position() {
                 ("Message".into(), canaries[5].into()),
                 ("MediaUrl".into(), canaries[6].into()),
                 ("Twiml".into(), canaries[7].into()),
+                ("SipPassword".into(), canaries[8].into()),
+                ("PaymentToken".into(), canaries[9].into()),
+                ("X-Twilio-Signature".into(), canaries[10].into()),
             ],
             safety: OperationSafety::Mutation,
         })

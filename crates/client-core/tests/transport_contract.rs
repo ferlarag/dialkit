@@ -1,3 +1,7 @@
+#[path = "transport_contract/endpoints.rs"]
+mod endpoints;
+#[path = "transport_contract/media.rs"]
+mod media;
 #[path = "transport_contract/pagination.rs"]
 mod pagination;
 #[path = "transport_contract/redaction_canaries.rs"]

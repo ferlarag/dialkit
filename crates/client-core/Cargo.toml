@@ -17,6 +17,7 @@ native-tls = ["reqwest/native-tls"]
 [dependencies]
 async-stream.workspace = true
 base64.workspace = true
+bytes.workspace = true
 futures-core.workspace = true
 futures-util.workspace = true
 http.workspace = true

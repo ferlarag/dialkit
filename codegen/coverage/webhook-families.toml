@@ -1,0 +1,27 @@
+schema = "dialkit.webhook-coverage.v1"
+reviewed_on = "2026-09-17"
+families = [
+  { family="voice-instruction", variants=["inbound","outbound-answer","redirect","fallback","sip"], encodings=["GET","form"], parser="parse_voice", known_fields=["AccountSid","CallSid","From","To","CallStatus","Direction","ApiVersion","CallerName","ForwardedFrom"], open_values=["CallStatus"] },
+  { family="call-progress", variants=["initiated","ringing","answered","completed","busy","failed","no-answer","canceled"], encodings=["form"], parser="parse_voice", known_fields=["AccountSid","CallSid","ParentCallSid","CallStatus","Direction","Timestamp","SequenceNumber","CallbackSource"], open_values=["CallStatus"] },
+  { family="answering-machine", variants=["result","unknown"], encodings=["form"], parser="parse_voice", known_fields=["AccountSid","CallSid","AnsweredBy","MachineDetectionDuration"], open_values=["AnsweredBy"] },
+  { family="twiml-action", variants=["Connect","Dial","Enqueue","Gather","Pay","Record","Redirect","Refer","Message"], encodings=["form"], parser="parse_voice|parse_messaging", known_fields=["AccountSid","CallSid","DialCallSid","DialCallStatus","DialCallDuration","DialBridged","QueueResult","Digits","SpeechResult","Result"], open_values=["DialCallStatus","QueueResult","Result"] },
+  { family="recording", variants=["in-progress","completed","absent"], encodings=["form"], parser="parse_voice_control", known_fields=["AccountSid","CallSid","ConferenceSid","RecordingSid","RecordingStatus","RecordingUrl","RecordingDuration"], open_values=["RecordingStatus"] },
+  { family="conference", variants=["start","end","join","leave","mute","hold","speaker"], encodings=["form"], parser="parse_voice_control", known_fields=["AccountSid","CallSid","ConferenceSid","FriendlyName","StatusCallbackEvent","ParticipantLabel","Timestamp","SequenceNumber","Muted","Hold"], open_values=["StatusCallbackEvent"] },
+  { family="queue", variants=["enqueue","wait","leave","dequeue"], encodings=["form"], parser="parse_voice_control", known_fields=["AccountSid","CallSid","QueueSid","QueueResult","QueuePosition","QueueTime"], open_values=["QueueResult"] },
+  { family="gather", variants=["final","partial-speech"], encodings=["form"], parser="parse_voice_control", known_fields=["AccountSid","CallSid","Digits","SpeechResult","Confidence"], open_values=[] },
+  { family="stream-siprec", variants=["start","stop","error"], encodings=["form","json"], parser="parse_voice_realtime", known_fields=["AccountSid","CallSid","StreamSid","StreamEvent","SiprecSid","SiprecEvent","Timestamp"], open_values=["StreamEvent","SiprecEvent"] },
+  { family="transcription", variants=["status","result"], encodings=["form","json"], parser="parse_voice_realtime", known_fields=["AccountSid","CallSid","TranscriptionSid","TranscriptionEvent","Result"], open_values=["TranscriptionEvent"] },
+  { family="payment", variants=["action","status"], encodings=["form"], parser="parse_voice_realtime", known_fields=["AccountSid","CallSid","Result","PaymentToken"], open_values=["Result"] },
+  { family="user-defined-message", variants=["subscription-delivery"], encodings=["form","json"], parser="parse_voice_realtime", known_fields=["AccountSid","CallSid","Event","Payload"], open_values=["Event"] },
+  { family="incoming-message", variants=["sms","mms"], encodings=["GET","form"], parser="parse_messaging", known_fields=["AccountSid","MessageSid","SmsSid","From","To","Body","NumMedia","MessagingServiceSid"], open_values=[] },
+  { family="message-status", variants=["accepted","scheduled","canceled","queued","sending","sent","receiving","received","delivered","undelivered","failed","read","unknown"], encodings=["form","json"], parser="parse_messaging", known_fields=["AccountSid","MessageSid","SmsSid","MessageStatus","SmsStatus","ErrorCode","ErrorMessage","ChannelData","RawDlrDoneDate","MessagingServiceSid"], open_values=["MessageStatus","SmsStatus"] },
+  { family="messaging-service-routing", variants=["primary","fallback","status"], encodings=["form"], parser="parse_messaging", known_fields=["AccountSid","MessageSid","SmsSid","MessagingServiceSid","From","To","Body","MessageStatus"], open_values=["MessageStatus"] },
+  { family="json-verification", variants=["any-supported-family"], encodings=["json+bodySHA256"], parser="verify_json", known_fields=[], open_values=[] },
+]
+
+[evidence]
+valid_signature = "crates/client/tests/contracts/webhook_matrix.rs#every_webhook_family_has_signed_typed_forward_compatible_evidence"
+invalid_signature = "crates/client/tests/contracts/webhook_matrix.rs#every_webhook_family_rejects_an_invalid_signature"
+known_fields = "crates/client/tests/contracts/webhook_matrix.rs#manifest_known_fields_match_typed_family_fields"
+unknown_retention = "crates/client/tests/contracts/webhook_matrix.rs#every_webhook_family_has_signed_typed_forward_compatible_evidence"
+encodings = "crates/client/tests/contracts/webhook_matrix.rs#every_applicable_json_encoding_has_typed_evidence"

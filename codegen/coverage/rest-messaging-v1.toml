@@ -1,0 +1,1397 @@
+schema = "dialkit.rest-coverage.v1"
+source_id = "MSG-V1"
+generated_crate = "dialkit-messaging-generated"
+selected_operations = 58
+
+[[operation]]
+operation_id = "CreateAlphaSender"
+domain = "Alpha senders"
+method = "POST"
+path = "/v1/Services/{ServiceSid}/AlphaSenders"
+generated_symbol = "messaging_v1_alpha_sender_api::create_alpha_sender"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_alpha_sender"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_alpha_sender"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_alpha_sender"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_alpha_sender"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_alpha_sender"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_alpha_sender"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_alpha_sender"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_alpha_sender"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_alpha_sender"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_alpha_sender"
+
+[[operation]]
+operation_id = "CreateBrandRegistrationOtp"
+domain = "A2P brand registration OTP"
+method = "POST"
+path = "/v1/a2p/BrandRegistrations/{BrandRegistrationSid}/SmsOtp"
+generated_symbol = "messaging_v1_brand_registration_otp_api::create_brand_registration_otp"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registration_otp"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registration_otp"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registration_otp"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registration_otp"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registration_otp"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registration_otp"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registration_otp"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registration_otp"
+
+[[operation]]
+operation_id = "CreateBrandRegistrations"
+domain = "A2P brand registrations"
+method = "POST"
+path = "/v1/a2p/BrandRegistrations"
+generated_symbol = "messaging_v1_brand_registration_api::create_brand_registrations"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registrations"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registrations"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registrations"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registrations"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registrations"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registrations"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registrations"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = { n_a = "pinned operation declares no path_parameters" }
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registrations"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_registrations"
+
+[[operation]]
+operation_id = "CreateBrandVetting"
+domain = "A2P brand vettings"
+method = "POST"
+path = "/v1/a2p/BrandRegistrations/{BrandSid}/Vettings"
+generated_symbol = "messaging_v1_brand_vetting_api::create_brand_vetting"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_vetting"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_vetting"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_vetting"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_vetting"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_vetting"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_vetting"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_vetting"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_vetting"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_vetting"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_brand_vetting"
+
+[[operation]]
+operation_id = "CreateChannelSender"
+domain = "Channel senders"
+method = "POST"
+path = "/v1/Services/{MessagingServiceSid}/ChannelSenders"
+generated_symbol = "messaging_v1_channel_sender_api::create_channel_sender"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_channel_sender"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_channel_sender"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_channel_sender"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_channel_sender"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_channel_sender"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_channel_sender"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_channel_sender"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_channel_sender"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_channel_sender"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_channel_sender"
+
+[[operation]]
+operation_id = "CreateDestinationAlphaSender"
+domain = "Destination alpha senders"
+method = "POST"
+path = "/v1/Services/{ServiceSid}/DestinationAlphaSenders"
+generated_symbol = "messaging_v1_destination_alpha_sender_api::create_destination_alpha_sender"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_destination_alpha_sender"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_destination_alpha_sender"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_destination_alpha_sender"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_destination_alpha_sender"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_destination_alpha_sender"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_destination_alpha_sender"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_destination_alpha_sender"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_destination_alpha_sender"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_destination_alpha_sender"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_destination_alpha_sender"
+
+[[operation]]
+operation_id = "CreateExternalCampaign"
+domain = "Externally registered US A2P campaigns"
+method = "POST"
+path = "/v1/Services/PreregisteredUsa2p"
+generated_symbol = "messaging_v1_external_campaign_api::create_external_campaign"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_external_campaign"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_external_campaign"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_external_campaign"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_external_campaign"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_external_campaign"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_external_campaign"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_external_campaign"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = { n_a = "pinned operation declares no path_parameters" }
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_external_campaign"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_external_campaign"
+
+[[operation]]
+operation_id = "CreateLinkshorteningMessagingService"
+domain = "Service/domain link-shortening association"
+method = "POST"
+path = "/v1/LinkShortening/Domains/{DomainSid}/MessagingServices/{MessagingServiceSid}"
+generated_symbol = "messaging_v1_linkshortening_messaging_service_api::create_linkshortening_messaging_service"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_linkshortening_messaging_service"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_linkshortening_messaging_service"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_linkshortening_messaging_service"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_linkshortening_messaging_service"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_linkshortening_messaging_service"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_linkshortening_messaging_service"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_linkshortening_messaging_service"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_linkshortening_messaging_service"
+
+[[operation]]
+operation_id = "CreatePhoneNumber"
+domain = "Service phone-number senders"
+method = "POST"
+path = "/v1/Services/{ServiceSid}/PhoneNumbers"
+generated_symbol = "messaging_v1_phone_number_api::create_phone_number"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_phone_number"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_phone_number"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_phone_number"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_phone_number"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_phone_number"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_phone_number"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_phone_number"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_phone_number"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_phone_number"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_phone_number"
+
+[[operation]]
+operation_id = "CreateService"
+domain = "Messaging Services"
+method = "POST"
+path = "/v1/Services"
+generated_symbol = "messaging_v1_service_api::create_service"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_service"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_service"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_service"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_service"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_service"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_service"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_service"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = { n_a = "pinned operation declares no path_parameters" }
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_service"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_service"
+
+[[operation]]
+operation_id = "CreateShortCode"
+domain = "Service short-code senders"
+method = "POST"
+path = "/v1/Services/{ServiceSid}/ShortCodes"
+generated_symbol = "messaging_v1_short_code_api::create_short_code"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_short_code"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_short_code"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_short_code"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_short_code"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_short_code"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_short_code"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_short_code"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_short_code"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_short_code"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_short_code"
+
+[[operation]]
+operation_id = "CreateTollfreeVerification"
+domain = "Toll-free verifications"
+method = "POST"
+path = "/v1/Tollfree/Verifications"
+generated_symbol = "messaging_v1_tollfree_verification_api::create_tollfree_verification"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_tollfree_verification"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_tollfree_verification"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_tollfree_verification"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_tollfree_verification"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_tollfree_verification"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_tollfree_verification"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_tollfree_verification"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = { n_a = "pinned operation declares no path_parameters" }
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_tollfree_verification"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_tollfree_verification"
+
+[[operation]]
+operation_id = "CreateUsAppToPerson"
+domain = "US A2P campaigns"
+method = "POST"
+path = "/v1/Services/{MessagingServiceSid}/Compliance/Usa2p"
+generated_symbol = "messaging_v1_us_app_to_person_api::create_us_app_to_person"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_us_app_to_person"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_us_app_to_person"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_us_app_to_person"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_us_app_to_person"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_us_app_to_person"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_us_app_to_person"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_us_app_to_person"
+evidence.header_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_us_app_to_person"
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_us_app_to_person"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_us_app_to_person"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_create_us_app_to_person"
+
+[[operation]]
+operation_id = "DeleteAlphaSender"
+domain = "Alpha senders"
+method = "DELETE"
+path = "/v1/Services/{ServiceSid}/AlphaSenders/{Sid}"
+generated_symbol = "messaging_v1_alpha_sender_api::delete_alpha_sender"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_alpha_sender"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_alpha_sender"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_alpha_sender"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_alpha_sender"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_alpha_sender"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_alpha_sender"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_alpha_sender"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = { n_a = "pinned operation declares no response_fields" }
+
+[[operation]]
+operation_id = "DeleteChannelSender"
+domain = "Channel senders"
+method = "DELETE"
+path = "/v1/Services/{MessagingServiceSid}/ChannelSenders/{Sid}"
+generated_symbol = "messaging_v1_channel_sender_api::delete_channel_sender"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_channel_sender"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_channel_sender"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_channel_sender"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_channel_sender"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_channel_sender"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_channel_sender"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_channel_sender"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = { n_a = "pinned operation declares no response_fields" }
+
+[[operation]]
+operation_id = "DeleteDestinationAlphaSender"
+domain = "Destination alpha senders"
+method = "DELETE"
+path = "/v1/Services/{ServiceSid}/DestinationAlphaSenders/{Sid}"
+generated_symbol = "messaging_v1_destination_alpha_sender_api::delete_destination_alpha_sender"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_destination_alpha_sender"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_destination_alpha_sender"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_destination_alpha_sender"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_destination_alpha_sender"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_destination_alpha_sender"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_destination_alpha_sender"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_destination_alpha_sender"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = { n_a = "pinned operation declares no response_fields" }
+
+[[operation]]
+operation_id = "DeleteDomainCertV4"
+domain = "Link-shortening domain certificates"
+method = "DELETE"
+path = "/v1/LinkShortening/Domains/{DomainSid}/Certificate"
+generated_symbol = "messaging_v1_domain_certs_api::delete_domain_cert_v4"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_domain_cert_v4"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_domain_cert_v4"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_domain_cert_v4"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_domain_cert_v4"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_domain_cert_v4"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_domain_cert_v4"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_domain_cert_v4"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = { n_a = "pinned operation declares no response_fields" }
+
+[[operation]]
+operation_id = "DeleteLinkshorteningMessagingService"
+domain = "Service/domain link-shortening association"
+method = "DELETE"
+path = "/v1/LinkShortening/Domains/{DomainSid}/MessagingServices/{MessagingServiceSid}"
+generated_symbol = "messaging_v1_linkshortening_messaging_service_api::delete_linkshortening_messaging_service"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_linkshortening_messaging_service"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_linkshortening_messaging_service"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_linkshortening_messaging_service"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_linkshortening_messaging_service"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_linkshortening_messaging_service"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_linkshortening_messaging_service"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_linkshortening_messaging_service"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = { n_a = "pinned operation declares no response_fields" }
+
+[[operation]]
+operation_id = "DeletePhoneNumber"
+domain = "Service phone-number senders"
+method = "DELETE"
+path = "/v1/Services/{ServiceSid}/PhoneNumbers/{Sid}"
+generated_symbol = "messaging_v1_phone_number_api::delete_phone_number"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_phone_number"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_phone_number"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_phone_number"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_phone_number"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_phone_number"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_phone_number"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_phone_number"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = { n_a = "pinned operation declares no response_fields" }
+
+[[operation]]
+operation_id = "DeleteService"
+domain = "Messaging Services"
+method = "DELETE"
+path = "/v1/Services/{Sid}"
+generated_symbol = "messaging_v1_service_api::delete_service"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_service"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_service"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_service"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_service"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_service"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_service"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_service"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = { n_a = "pinned operation declares no response_fields" }
+
+[[operation]]
+operation_id = "DeleteShortCode"
+domain = "Service short-code senders"
+method = "DELETE"
+path = "/v1/Services/{ServiceSid}/ShortCodes/{Sid}"
+generated_symbol = "messaging_v1_short_code_api::delete_short_code"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_short_code"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_short_code"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_short_code"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_short_code"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_short_code"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_short_code"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_short_code"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = { n_a = "pinned operation declares no response_fields" }
+
+[[operation]]
+operation_id = "DeleteTollfreeVerification"
+domain = "Toll-free verifications"
+method = "DELETE"
+path = "/v1/Tollfree/Verifications/{Sid}"
+generated_symbol = "messaging_v1_tollfree_verification_api::delete_tollfree_verification"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_tollfree_verification"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_tollfree_verification"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_tollfree_verification"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_tollfree_verification"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_tollfree_verification"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_tollfree_verification"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_tollfree_verification"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = { n_a = "pinned operation declares no response_fields" }
+
+[[operation]]
+operation_id = "DeleteUsAppToPerson"
+domain = "US A2P campaigns"
+method = "DELETE"
+path = "/v1/Services/{MessagingServiceSid}/Compliance/Usa2p/{Sid}"
+generated_symbol = "messaging_v1_us_app_to_person_api::delete_us_app_to_person"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_us_app_to_person"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_us_app_to_person"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_us_app_to_person"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_us_app_to_person"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_us_app_to_person"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_us_app_to_person"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_delete_us_app_to_person"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = { n_a = "pinned operation declares no response_fields" }
+
+[[operation]]
+operation_id = "FetchAlphaSender"
+domain = "Alpha senders"
+method = "GET"
+path = "/v1/Services/{ServiceSid}/AlphaSenders/{Sid}"
+generated_symbol = "messaging_v1_alpha_sender_api::fetch_alpha_sender"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_alpha_sender"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_alpha_sender"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_alpha_sender"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_alpha_sender"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_alpha_sender"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_alpha_sender"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_alpha_sender"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_alpha_sender"
+
+[[operation]]
+operation_id = "FetchBrandRegistrations"
+domain = "A2P brand registrations"
+method = "GET"
+path = "/v1/a2p/BrandRegistrations/{Sid}"
+generated_symbol = "messaging_v1_brand_registration_api::fetch_brand_registrations"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_registrations"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_registrations"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_registrations"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_registrations"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_registrations"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_registrations"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_registrations"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_registrations"
+
+[[operation]]
+operation_id = "FetchBrandVetting"
+domain = "A2P brand vettings"
+method = "GET"
+path = "/v1/a2p/BrandRegistrations/{BrandSid}/Vettings/{BrandVettingSid}"
+generated_symbol = "messaging_v1_brand_vetting_api::fetch_brand_vetting"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_vetting"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_vetting"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_vetting"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_vetting"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_vetting"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_vetting"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_vetting"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_brand_vetting"
+
+[[operation]]
+operation_id = "FetchChannelSender"
+domain = "Channel senders"
+method = "GET"
+path = "/v1/Services/{MessagingServiceSid}/ChannelSenders/{Sid}"
+generated_symbol = "messaging_v1_channel_sender_api::fetch_channel_sender"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_channel_sender"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_channel_sender"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_channel_sender"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_channel_sender"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_channel_sender"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_channel_sender"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_channel_sender"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_channel_sender"
+
+[[operation]]
+operation_id = "FetchDeactivation"
+domain = "Deactivations"
+method = "GET"
+path = "/v1/Deactivations"
+generated_symbol = "messaging_v1_deactivations_api::fetch_deactivation"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_deactivation"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_deactivation"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_deactivation"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_deactivation"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_deactivation"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_deactivation"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = { n_a = "pinned operation declares no path_parameters" }
+evidence.query_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_deactivation"
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = { n_a = "pinned operation declares no response_fields" }
+
+[[operation]]
+operation_id = "FetchDestinationAlphaSender"
+domain = "Destination alpha senders"
+method = "GET"
+path = "/v1/Services/{ServiceSid}/DestinationAlphaSenders/{Sid}"
+generated_symbol = "messaging_v1_destination_alpha_sender_api::fetch_destination_alpha_sender"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_destination_alpha_sender"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_destination_alpha_sender"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_destination_alpha_sender"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_destination_alpha_sender"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_destination_alpha_sender"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_destination_alpha_sender"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_destination_alpha_sender"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_destination_alpha_sender"
+
+[[operation]]
+operation_id = "FetchDomainCertV4"
+domain = "Link-shortening domain certificates"
+method = "GET"
+path = "/v1/LinkShortening/Domains/{DomainSid}/Certificate"
+generated_symbol = "messaging_v1_domain_certs_api::fetch_domain_cert_v4"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_cert_v4"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_cert_v4"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_cert_v4"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_cert_v4"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_cert_v4"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_cert_v4"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_cert_v4"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_cert_v4"
+
+[[operation]]
+operation_id = "FetchDomainConfig"
+domain = "Link-shortening domain configuration"
+method = "GET"
+path = "/v1/LinkShortening/Domains/{DomainSid}/Config"
+generated_symbol = "messaging_v1_domain_config_api::fetch_domain_config"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config"
+
+[[operation]]
+operation_id = "FetchDomainConfigMessagingService"
+domain = "Service domain configuration"
+method = "GET"
+path = "/v1/LinkShortening/MessagingService/{MessagingServiceSid}/DomainConfig"
+generated_symbol = "messaging_v1_domain_config_messaging_service_api::fetch_domain_config_messaging_service"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config_messaging_service"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config_messaging_service"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config_messaging_service"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config_messaging_service"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config_messaging_service"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config_messaging_service"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config_messaging_service"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_config_messaging_service"
+
+[[operation]]
+operation_id = "FetchDomainDnsValidation"
+domain = "Link-shortening DNS validation"
+method = "GET"
+path = "/v1/LinkShortening/Domains/{DomainSid}/ValidateDns"
+generated_symbol = "messaging_v1_domain_validate_dns_api::fetch_domain_dns_validation"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_dns_validation"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_dns_validation"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_dns_validation"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_dns_validation"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_dns_validation"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_dns_validation"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_dns_validation"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_domain_dns_validation"
+
+[[operation]]
+operation_id = "FetchLinkshorteningMessagingServiceDomainAssociation"
+domain = "Service link-shortening domain lookup"
+method = "GET"
+path = "/v1/LinkShortening/MessagingServices/{MessagingServiceSid}/Domain"
+generated_symbol = "messaging_v1_linkshortening_messaging_service_domain_association_api::fetch_linkshortening_messaging_service_domain_association"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_linkshortening_messaging_service_domain_association"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_linkshortening_messaging_service_domain_association"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_linkshortening_messaging_service_domain_association"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_linkshortening_messaging_service_domain_association"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_linkshortening_messaging_service_domain_association"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_linkshortening_messaging_service_domain_association"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_linkshortening_messaging_service_domain_association"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_linkshortening_messaging_service_domain_association"
+
+[[operation]]
+operation_id = "FetchPhoneNumber"
+domain = "Service phone-number senders"
+method = "GET"
+path = "/v1/Services/{ServiceSid}/PhoneNumbers/{Sid}"
+generated_symbol = "messaging_v1_phone_number_api::fetch_phone_number"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_phone_number"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_phone_number"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_phone_number"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_phone_number"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_phone_number"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_phone_number"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_phone_number"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_phone_number"
+
+[[operation]]
+operation_id = "FetchService"
+domain = "Messaging Services"
+method = "GET"
+path = "/v1/Services/{Sid}"
+generated_symbol = "messaging_v1_service_api::fetch_service"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_service"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_service"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_service"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_service"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_service"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_service"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_service"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_service"
+
+[[operation]]
+operation_id = "FetchShortCode"
+domain = "Service short-code senders"
+method = "GET"
+path = "/v1/Services/{ServiceSid}/ShortCodes/{Sid}"
+generated_symbol = "messaging_v1_short_code_api::fetch_short_code"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_short_code"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_short_code"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_short_code"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_short_code"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_short_code"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_short_code"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_short_code"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_short_code"
+
+[[operation]]
+operation_id = "FetchTollfreeVerification"
+domain = "Toll-free verifications"
+method = "GET"
+path = "/v1/Tollfree/Verifications/{Sid}"
+generated_symbol = "messaging_v1_tollfree_verification_api::fetch_tollfree_verification"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_tollfree_verification"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_tollfree_verification"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_tollfree_verification"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_tollfree_verification"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_tollfree_verification"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_tollfree_verification"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_tollfree_verification"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_tollfree_verification"
+
+[[operation]]
+operation_id = "FetchUsAppToPerson"
+domain = "US A2P campaigns"
+method = "GET"
+path = "/v1/Services/{MessagingServiceSid}/Compliance/Usa2p/{Sid}"
+generated_symbol = "messaging_v1_us_app_to_person_api::fetch_us_app_to_person"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person"
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person"
+
+[[operation]]
+operation_id = "FetchUsAppToPersonUsecase"
+domain = "US A2P campaign use case"
+method = "GET"
+path = "/v1/Services/{MessagingServiceSid}/Compliance/Usa2p/Usecases"
+generated_symbol = "messaging_v1_us_app_to_person_usecase_api::fetch_us_app_to_person_usecase"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person_usecase"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person_usecase"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person_usecase"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person_usecase"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person_usecase"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person_usecase"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person_usecase"
+evidence.query_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person_usecase"
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_us_app_to_person_usecase"
+
+[[operation]]
+operation_id = "FetchUsecase"
+domain = "Messaging Service use cases"
+method = "GET"
+path = "/v1/Services/Usecases"
+generated_symbol = "messaging_v1_usecase_api::fetch_usecase"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_usecase"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_usecase"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_usecase"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_usecase"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_usecase"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = { n_a = "pinned operation declares no constraints" }
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = { n_a = "pinned operation declares no path_parameters" }
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_fetch_usecase"
+
+[[operation]]
+operation_id = "ListAlphaSender"
+domain = "Alpha senders"
+method = "GET"
+path = "/v1/Services/{ServiceSid}/AlphaSenders"
+generated_symbol = "messaging_v1_alpha_sender_api::list_alpha_sender"
+phase = "US1"
+pagination = true
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_alpha_sender"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_alpha_sender"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_alpha_sender"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_alpha_sender"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_alpha_sender"
+evidence.pagination = "crates/messaging-generated/tests/pagination_contracts.rs#adapter_list_alpha_sender"
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_alpha_sender"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_alpha_sender"
+evidence.query_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_alpha_sender"
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_alpha_sender"
+
+[[operation]]
+operation_id = "ListBrandRegistrations"
+domain = "A2P brand registrations"
+method = "GET"
+path = "/v1/a2p/BrandRegistrations"
+generated_symbol = "messaging_v1_brand_registration_api::list_brand_registrations"
+phase = "US1"
+pagination = true
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_registrations"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_registrations"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_registrations"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_registrations"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_registrations"
+evidence.pagination = "crates/messaging-generated/tests/pagination_contracts.rs#adapter_list_brand_registrations"
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_registrations"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = { n_a = "pinned operation declares no path_parameters" }
+evidence.query_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_registrations"
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_registrations"
+
+[[operation]]
+operation_id = "ListBrandVetting"
+domain = "A2P brand vettings"
+method = "GET"
+path = "/v1/a2p/BrandRegistrations/{BrandSid}/Vettings"
+generated_symbol = "messaging_v1_brand_vetting_api::list_brand_vetting"
+phase = "US1"
+pagination = true
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_vetting"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_vetting"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_vetting"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_vetting"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_vetting"
+evidence.pagination = "crates/messaging-generated/tests/pagination_contracts.rs#adapter_list_brand_vetting"
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_vetting"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_vetting"
+evidence.query_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_vetting"
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_brand_vetting"
+
+[[operation]]
+operation_id = "ListChannelSender"
+domain = "Channel senders"
+method = "GET"
+path = "/v1/Services/{MessagingServiceSid}/ChannelSenders"
+generated_symbol = "messaging_v1_channel_sender_api::list_channel_sender"
+phase = "US1"
+pagination = true
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_channel_sender"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_channel_sender"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_channel_sender"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_channel_sender"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_channel_sender"
+evidence.pagination = "crates/messaging-generated/tests/pagination_contracts.rs#adapter_list_channel_sender"
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_channel_sender"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_channel_sender"
+evidence.query_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_channel_sender"
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_channel_sender"
+
+[[operation]]
+operation_id = "ListDestinationAlphaSender"
+domain = "Destination alpha senders"
+method = "GET"
+path = "/v1/Services/{ServiceSid}/DestinationAlphaSenders"
+generated_symbol = "messaging_v1_destination_alpha_sender_api::list_destination_alpha_sender"
+phase = "US1"
+pagination = true
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_destination_alpha_sender"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_destination_alpha_sender"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_destination_alpha_sender"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_destination_alpha_sender"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_destination_alpha_sender"
+evidence.pagination = "crates/messaging-generated/tests/pagination_contracts.rs#adapter_list_destination_alpha_sender"
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_destination_alpha_sender"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_destination_alpha_sender"
+evidence.query_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_destination_alpha_sender"
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_destination_alpha_sender"
+
+[[operation]]
+operation_id = "ListPhoneNumber"
+domain = "Service phone-number senders"
+method = "GET"
+path = "/v1/Services/{ServiceSid}/PhoneNumbers"
+generated_symbol = "messaging_v1_phone_number_api::list_phone_number"
+phase = "US1"
+pagination = true
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_phone_number"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_phone_number"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_phone_number"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_phone_number"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_phone_number"
+evidence.pagination = "crates/messaging-generated/tests/pagination_contracts.rs#adapter_list_phone_number"
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_phone_number"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_phone_number"
+evidence.query_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_phone_number"
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_phone_number"
+
+[[operation]]
+operation_id = "ListService"
+domain = "Messaging Services"
+method = "GET"
+path = "/v1/Services"
+generated_symbol = "messaging_v1_service_api::list_service"
+phase = "US1"
+pagination = true
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_service"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_service"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_service"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_service"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_service"
+evidence.pagination = "crates/messaging-generated/tests/pagination_contracts.rs#adapter_list_service"
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_service"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = { n_a = "pinned operation declares no path_parameters" }
+evidence.query_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_service"
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_service"
+
+[[operation]]
+operation_id = "ListShortCode"
+domain = "Service short-code senders"
+method = "GET"
+path = "/v1/Services/{ServiceSid}/ShortCodes"
+generated_symbol = "messaging_v1_short_code_api::list_short_code"
+phase = "US1"
+pagination = true
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_short_code"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_short_code"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_short_code"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_short_code"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_short_code"
+evidence.pagination = "crates/messaging-generated/tests/pagination_contracts.rs#adapter_list_short_code"
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_short_code"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_short_code"
+evidence.query_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_short_code"
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_short_code"
+
+[[operation]]
+operation_id = "ListTollfreeVerification"
+domain = "Toll-free verifications"
+method = "GET"
+path = "/v1/Tollfree/Verifications"
+generated_symbol = "messaging_v1_tollfree_verification_api::list_tollfree_verification"
+phase = "US1"
+pagination = true
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_tollfree_verification"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_tollfree_verification"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_tollfree_verification"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_tollfree_verification"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_tollfree_verification"
+evidence.pagination = "crates/messaging-generated/tests/pagination_contracts.rs#adapter_list_tollfree_verification"
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_tollfree_verification"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = { n_a = "pinned operation declares no path_parameters" }
+evidence.query_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_tollfree_verification"
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_tollfree_verification"
+
+[[operation]]
+operation_id = "ListUsAppToPerson"
+domain = "US A2P campaigns"
+method = "GET"
+path = "/v1/Services/{MessagingServiceSid}/Compliance/Usa2p"
+generated_symbol = "messaging_v1_us_app_to_person_api::list_us_app_to_person"
+phase = "US1"
+pagination = true
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_us_app_to_person"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_us_app_to_person"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_us_app_to_person"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_us_app_to_person"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_us_app_to_person"
+evidence.pagination = "crates/messaging-generated/tests/pagination_contracts.rs#adapter_list_us_app_to_person"
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_us_app_to_person"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_us_app_to_person"
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_us_app_to_person"
+evidence.query_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_us_app_to_person"
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_list_us_app_to_person"
+
+[[operation]]
+operation_id = "UpdateBrandRegistrations"
+domain = "A2P brand registrations"
+method = "POST"
+path = "/v1/a2p/BrandRegistrations/{Sid}"
+generated_symbol = "messaging_v1_brand_registration_api::update_brand_registrations"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_brand_registrations"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_brand_registrations"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_brand_registrations"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_brand_registrations"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_brand_registrations"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_brand_registrations"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_brand_registrations"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_brand_registrations"
+
+[[operation]]
+operation_id = "UpdateDomainCertV4"
+domain = "Link-shortening domain certificates"
+method = "POST"
+path = "/v1/LinkShortening/Domains/{DomainSid}/Certificate"
+generated_symbol = "messaging_v1_domain_certs_api::update_domain_cert_v4"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_cert_v4"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_cert_v4"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_cert_v4"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_cert_v4"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_cert_v4"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_cert_v4"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_cert_v4"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_cert_v4"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_cert_v4"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_cert_v4"
+
+[[operation]]
+operation_id = "UpdateDomainConfig"
+domain = "Link-shortening domain configuration"
+method = "POST"
+path = "/v1/LinkShortening/Domains/{DomainSid}/Config"
+generated_symbol = "messaging_v1_domain_config_api::update_domain_config"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_config"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_config"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_config"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_config"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_config"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_config"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_config"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_config"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_config"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_domain_config"
+
+[[operation]]
+operation_id = "UpdateRequestManagedCert"
+domain = "Managed certificate requests"
+method = "POST"
+path = "/v1/LinkShortening/Domains/{DomainSid}/RequestManagedCert"
+generated_symbol = "messaging_v1_request_managed_cert_api::update_request_managed_cert"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_request_managed_cert"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_request_managed_cert"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_request_managed_cert"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_request_managed_cert"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_request_managed_cert"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_request_managed_cert"
+evidence.form_parameters = { n_a = "pinned operation declares no form_parameters" }
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_request_managed_cert"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = { n_a = "pinned operation declares no request_media_type" }
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_request_managed_cert"
+
+[[operation]]
+operation_id = "UpdateService"
+domain = "Messaging Services"
+method = "POST"
+path = "/v1/Services/{Sid}"
+generated_symbol = "messaging_v1_service_api::update_service"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_service"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_service"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_service"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_service"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_service"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_service"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_service"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_service"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_service"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_service"
+
+[[operation]]
+operation_id = "UpdateTollfreeVerification"
+domain = "Toll-free verifications"
+method = "POST"
+path = "/v1/Tollfree/Verifications/{Sid}"
+generated_symbol = "messaging_v1_tollfree_verification_api::update_tollfree_verification"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_tollfree_verification"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_tollfree_verification"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_tollfree_verification"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_tollfree_verification"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_tollfree_verification"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_tollfree_verification"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_tollfree_verification"
+evidence.header_parameters = { n_a = "pinned operation declares no header_parameters" }
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_tollfree_verification"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_tollfree_verification"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_tollfree_verification"
+
+[[operation]]
+operation_id = "UpdateUsAppToPerson"
+domain = "US A2P campaigns"
+method = "POST"
+path = "/v1/Services/{MessagingServiceSid}/Compliance/Usa2p/{Sid}"
+generated_symbol = "messaging_v1_us_app_to_person_api::update_us_app_to_person"
+phase = "US1"
+pagination = false
+evidence.method_path = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_us_app_to_person"
+evidence.authentication = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_us_app_to_person"
+evidence.parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_us_app_to_person"
+evidence.success = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_us_app_to_person"
+evidence.error = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_us_app_to_person"
+evidence.pagination = { n_a = "operation is not a list operation" }
+
+evidence.constraints = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_us_app_to_person"
+evidence.form_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_us_app_to_person"
+evidence.header_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_us_app_to_person"
+evidence.json_body = { n_a = "pinned operation declares no json_body" }
+evidence.path_parameters = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_us_app_to_person"
+evidence.query_parameters = { n_a = "pinned operation declares no query_parameters" }
+evidence.request_media_type = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_us_app_to_person"
+evidence.response_fields = "crates/messaging-generated/tests/runtime_contracts.rs#contract_update_us_app_to_person"
+

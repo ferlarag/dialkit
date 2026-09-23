@@ -1,0 +1,5 @@
+schema = "dialkit.contract-overrides.v1"
+
+# Reviewed fixture substitutions belong here when a pinned operation cannot be
+# exercised from schema-derived synthetic values alone. The current inventory
+# needs no substitutions.

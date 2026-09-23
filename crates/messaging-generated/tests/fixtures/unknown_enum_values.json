@@ -1,0 +1,18 @@
+{
+  "enum_types": [
+    "BrandRegistrationsEnumBrandFeedback",
+    "BrandRegistrationsEnumIdentityStatus",
+    "BrandRegistrationsEnumStatus",
+    "BrandVettingEnumVettingProvider",
+    "FallbackMethod",
+    "InboundMethod",
+    "ServiceEnumScanMessageContent",
+    "TollfreeVerificationEnumBusinessRegistrationAuthority",
+    "TollfreeVerificationEnumBusinessType",
+    "TollfreeVerificationEnumOptInType",
+    "TollfreeVerificationEnumStatus",
+    "TollfreeVerificationEnumVettingProvider",
+    "UseCaseCategories"
+  ],
+  "unknown_value": "introduced-after-pin"
+}

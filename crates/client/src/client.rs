@@ -1,12 +1,15 @@
 //! Client configuration and service accessors.
 
-use crate::{Calls, Error, Messages};
+use crate::{
+    Applications, Calls, Conferences, Error, Media, Messages, MessagingServices, PhoneNumbers,
+    Queues, Recordings, Sip,
+};
 pub use dialkit_core::auth::{AccountSid, ApiKeySid};
 pub use dialkit_core::request::{TlsBackend, active_tls_backend};
 pub use dialkit_core::retry::RetryPolicy;
 use dialkit_core::{
     auth,
-    request::{ClientConfiguration, HttpClient},
+    request::{EndpointProfile, EndpointService, HttpClient},
 };
 use secrecy::SecretString;
 use std::{fmt, sync::Arc, time::Duration};
@@ -69,6 +72,7 @@ impl fmt::Debug for Credentials {
 #[derive(Clone)]
 pub struct Client {
     pub(crate) inner: Arc<HttpClient>,
+    pub(crate) messaging: Arc<HttpClient>,
 }
 
 impl Client {
@@ -88,6 +92,38 @@ impl Client {
     pub fn messages(&self) -> Messages {
         Messages::new(self.clone())
     }
+    #[must_use]
+    pub fn applications(&self) -> Applications {
+        Applications::new(self.clone())
+    }
+    #[must_use]
+    pub fn conferences(&self) -> Conferences {
+        Conferences::new(self.clone())
+    }
+    #[must_use]
+    pub fn recordings(&self) -> Recordings {
+        Recordings::new(self.clone())
+    }
+    #[must_use]
+    pub fn queues(&self) -> Queues {
+        Queues::new(self.clone())
+    }
+    #[must_use]
+    pub fn sip(&self) -> Sip {
+        Sip::new(self.clone())
+    }
+    #[must_use]
+    pub fn phone_numbers(&self) -> PhoneNumbers {
+        PhoneNumbers::new(self.clone())
+    }
+    #[must_use]
+    pub fn media(&self) -> Media {
+        Media::new(self.clone())
+    }
+    #[must_use]
+    pub fn messaging_services(&self) -> MessagingServices {
+        MessagingServices::new(self.clone())
+    }
 }
 
 impl fmt::Debug for Client {
@@ -99,6 +135,7 @@ impl fmt::Debug for Client {
 pub struct ClientBuilder {
     credentials: Credentials,
     base_url: Url,
+    messaging_base_url: Url,
     connect_timeout: Duration,
     request_timeout: Duration,
     retry_policy: RetryPolicy,
@@ -109,6 +146,8 @@ impl ClientBuilder {
         Self {
             credentials,
             base_url: Url::parse("https://api.twilio.com/").expect("constant Twilio URL is valid"),
+            messaging_base_url: Url::parse("https://messaging.twilio.com/")
+                .expect("constant Twilio URL is valid"),
             connect_timeout: Duration::from_secs(10),
             request_timeout: Duration::from_secs(30),
             retry_policy: RetryPolicy::conservative(),
@@ -118,6 +157,11 @@ impl ClientBuilder {
     #[must_use]
     pub fn base_url(mut self, url: Url) -> Self {
         self.base_url = url;
+        self
+    }
+    #[must_use]
+    pub fn messaging_base_url(mut self, url: Url) -> Self {
+        self.messaging_base_url = url;
         self
     }
     #[must_use]
@@ -137,17 +181,34 @@ impl ClientBuilder {
     }
 
     pub fn build(self) -> Result<Client, Error> {
-        let allow_http_for_tests = self.base_url.scheme() == "http";
-        let core = HttpClient::new(ClientConfiguration {
-            credentials: self.credentials.0,
-            base_url: self.base_url,
-            connect_timeout: self.connect_timeout,
-            request_timeout: self.request_timeout,
-            retry_policy: self.retry_policy,
-            allow_http_for_tests,
-        })?;
+        let credentials = self.credentials.0;
+        let api_profile = EndpointProfile::new(
+            EndpointService::Api2010,
+            self.base_url.clone(),
+            self.base_url.scheme() == "http",
+        );
+        let messaging_profile = EndpointProfile::new(
+            EndpointService::MessagingV1,
+            self.messaging_base_url.clone(),
+            self.messaging_base_url.scheme() == "http",
+        );
+        let core = HttpClient::for_profile(
+            credentials.clone(),
+            api_profile,
+            self.connect_timeout,
+            self.request_timeout,
+            self.retry_policy.clone(),
+        )?;
+        let messaging = HttpClient::for_profile(
+            credentials,
+            messaging_profile,
+            self.connect_timeout,
+            self.request_timeout,
+            self.retry_policy,
+        )?;
         Ok(Client {
             inner: Arc::new(core),
+            messaging: Arc::new(messaging),
         })
     }
 }
